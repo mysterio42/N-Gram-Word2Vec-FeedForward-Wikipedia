@@ -76,7 +76,6 @@ threshold: 0.00001 ( negative sampling distribution for word pruning / droping
 
 ## CLI
 ```shell
-python
 python run.py --load no
 ```
 
@@ -85,10 +84,6 @@ python run.py --load no
 python run.py --load yes
 ```
 
-# Traing N-Gram Word2Vec model
-```shell
-python run.py --load no
-```
 
 # Experiment 1 - Word Nearest Neighbours
 ```text
