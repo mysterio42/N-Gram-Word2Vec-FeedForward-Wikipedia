@@ -86,26 +86,26 @@ def neg_sampling_distribution(encoded_sentences, vocab_size):
     return p_neg
 
 
-def top_neighs(word, word2idx, idx2word, W):
+def top_neighs(word, word2idx, idx2word, W,top_k=10):
     V, D = W.shape
     word_encoding = word2idx[word]
     word_vector = W[word_encoding]
 
     distances = pairwise_distances(word_vector.reshape(1, D), W, metric='cosine').reshape(V)
-    idx = distances.argsort()[:10]
+    idx = distances.argsort()[:top_k]
 
     top_neighs = {idx2word[i]: distances[i] for i in idx if i != word_encoding}
     return top_neighs
 
 
-def analogy(pos1, neg1, neg2, word2idx, idx2word, W):
+def analogy(pos1, neg1, pos2, word2idx, idx2word, W):
     V, D = W.shape
-    for w in (pos1, neg1, neg2):
+    for w in (pos1, neg1, pos2):
         if w not in word2idx:
             print(f'word: {w} not in the corpus')
             return
 
-    p1, n1, n2 = W[word2idx[pos1]], W[word2idx[neg1]], W[word2idx[neg2]]
+    p1, n1, n2 = W[word2idx[pos1]], W[word2idx[neg1]], W[word2idx[pos2]]
 
     vec = p1 - n1 + n2
 
@@ -114,11 +114,11 @@ def analogy(pos1, neg1, neg2, word2idx, idx2word, W):
 
     best_idx = -1
     for i in idx:
-        if i not in [word2idx[w] for w in (pos1, neg1, neg2)]:
+        if i not in [word2idx[w] for w in (pos1, neg1, pos2)]:
             best_idx = i
             break
 
-    equation = f'{pos1}-{neg1}+{neg2}'
+    equation = f'{pos1}-{neg1}+{pos2}'
     solution = idx2word[best_idx]
     rets = {'equation': equation,
             'solution': solution}
