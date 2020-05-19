@@ -118,8 +118,6 @@ def analogy(pos1, neg1, neg2, word2idx, idx2word, W):
             best_idx = i
             break
 
-    print(f' = {idx2word[best_idx]}')
-
     equation = f'{pos1}-{neg1}+{neg2}'
     solution = idx2word[best_idx]
     rets = {'equation': equation,
