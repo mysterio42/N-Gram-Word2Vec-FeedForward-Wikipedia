@@ -34,12 +34,12 @@ if __name__ == '__main__':
         W, V = load_model()
         word2idx = load_embedding()
         idx2word = {i: w for w, i in word2idx.items()}
-        for We in (W, (W + V.T) / 2):
+        for idx,We in enumerate((W, (W + V.T) / 2)):
             neighs = top_neighs('king', word2idx, idx2word, We)
             solution = analogy('world', 'city', 'population', word2idx, idx2word, We)
             print(solution)
             print(neighs)
-            to_csv('neighs','king',neighs)
+            to_csv(f'neighs{idx}','king',neighs)
 
 
     else:
