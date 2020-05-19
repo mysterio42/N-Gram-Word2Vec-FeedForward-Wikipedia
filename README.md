@@ -91,8 +91,24 @@ python run.py --load no
 ```
 
 # Experiment 1 - Word Nearest Neighbours
+```text
+So, We have 2 word embedding matrices and what do I do with them?
+```
+```text
+Which one should I choose?
+```
 
+### Sub Experiment - Choose Input-To-Hidden Weight
+## Word
+```text
+king
+```
+## Top 10 Nearest Neghbours with distances
+|      |      son |    henry |    kings |   charles |   brother |   emperor |      iii |     pope |   daughter |
+|:-----|---------:|---------:|---------:|----------:|----------:|----------:|---------:|---------:|-----------:|
+| king | 0.164976 | 0.178694 | 0.191809 |  0.220155 |   0.22258 |  0.239958 | 0.259195 | 0.308814 |   0.323617 |
 
+### Sub Experiment - Take the Average of two matrices
 ## Word
 ```text
 king
@@ -101,6 +117,8 @@ king
 |      |      son |    kings |    henry |   brother |   charles |      iii |   emperor |   daughter |    louis |
 |:-----|---------:|---------:|---------:|----------:|----------:|---------:|----------:|-----------:|---------:|
 | king | 0.181043 | 0.182554 | 0.199096 |  0.226432 |  0.238195 | 0.248272 |  0.262365 |   0.352746 | 0.361133 |
+
+
 
 
 # Expriment 2 - Word Analogy
