@@ -139,5 +139,25 @@ solution: estimated
 ![](figures/Figure_training.png)
 
 
+
+# Docker for the N-Gram Word2Vec model
+
+## Build the Docker image
+
+You can build docker image by following:
+
+```shell
+docker-compose build
+```
+
+## Run Docker container
+
+You can launch a container from the Docker image by following:
+
+```shell
+docker-compose up
+```
+
+
 # Under The Maintenance...
 
